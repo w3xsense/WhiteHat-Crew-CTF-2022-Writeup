@@ -1,5 +1,10 @@
 ## WhiteHat Crew CTF 2022
 
+## Scoreboard
+![image](https://user-images.githubusercontent.com/84785099/147886630-1cc099be-3cb9-40f1-ab4b-145a5af048c2.png)
+
+## Challenges
+
 ### Dark Web
 #### 1) TorPaste
 
