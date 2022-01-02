@@ -209,5 +209,13 @@ Answer: `WHC{http://ziraat-helpdesk.com/components/com_content/limpopapa/}` . We
 
 ![image](https://user-images.githubusercontent.com/84785099/147884904-75a85df2-bd62-4c62-835a-238b56c2d6c7.png)
 
+#### 9) Macroscope
+
+Question: If microscope is for microorganisms, maybe macroscope is for macroorganism? What is macroorganism? Is it even a word?
+
+Answer: Given hint is macroorganism which came out the word `macro` in my mind. Moreover, it is an `odt` file which is possible a macro file at the first sight.
+
+
+![image](https://user-images.githubusercontent.com/84785099/147885523-7e96ab36-3fd1-46e0-a89b-b22cb59bb3c8.png)
 
 
