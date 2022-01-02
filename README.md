@@ -36,7 +36,7 @@ Question: > Decode this base64:
 > 
 > WHC{your_decoded_text_here}
 
-Answer: WHC{base64_is_overrated}
+Answer: `WHC{base64_is_overrated}`
 
 #### 2) anencephaly
 
@@ -87,7 +87,7 @@ Question: There is supposed to be less than 10 items. Click on everything and fi
 What does the text said, and what number is the item number is the text? How many rows of the "No." column
 Flag Format i.e : WHC{36:Hello it's me}
 
-Answer: WHC{4:What, me worry?}
+Answer: `WHC{4:What, me worry?}`
 
 ![image](https://user-images.githubusercontent.com/84785099/147881143-4ee32d3d-d62f-4e00-8d27-e19dba6e444d.png)
 
@@ -147,9 +147,67 @@ Answer: sha256sum config
 
 Question: What is the threat name, hosts and classification? Format : WHC{threat name|hosts|classification}
 
-Answer: Based on VirusTotal info
+Answer: Based on VirusTotal info, [source](https://www.virustotal.com/gui/file/ba47f657a4745c96a62c444100d6c38bbff772b47ac03e83dc3ef5d94bc1d77c/community)
 
 ![image](https://user-images.githubusercontent.com/84785099/147881761-31e65982-0e3c-4a14-9428-e999217365a6.png)
+
+#### 3) Malware A - 3
+
+Question: What is the Static File Name? Format: WHC{name.exe}
+
+Answer: `WHC{0kEuVjiCbh.exe}`. Based on JoeSandBox info, [source](https://www.joesandbox.com/analysis/450613/0/html)
+
+
+#### 4) Malware B - 1
+
+Question: Lurks in P2P Malignant. What is the name of dropped file process name and it's SHA256? Format: WHC{process:SHA256}
+
+Answer: `WHC{services.exe:bf316f51d0c345d61eaee3940791b64e81f676e3bca42bad61073227bee6653c}`. Based on VT, [source](https://www.virustotal.com/gui/file/6f064d4987b4202ebe2faaab28f3582dd784f24fa1a13f305051a6d7e85a78ed/relations)
+
+![image](https://user-images.githubusercontent.com/84785099/147882591-46bd7b6d-b62c-4efb-8b53-98c16ef3bc21.png)
+
+#### 5) Malware B - 2
+
+Question: According to JoeSandBox, what is the type of 'Behavior and API' it have? Example Format: WHC{UPX_Packer} ; put underscore ' _ ' between two words
+
+Answer: `WHC{API_Interceptor}`. Based on JoeSandBox info, [source](https://www.joesandbox.com/analysis/450613/0/html)
+
+![image](https://user-images.githubusercontent.com/84785099/147882315-6284ba22-bfd2-4167-b118-369f73951248.png)
+
+#### 6) Malware C - 1
+
+Question: By doing analysis on your own, what is the first function that is enabled in the main function? Format: WHC{Filezilla:ScreenLogging}
+
+Answer: `WHC{GonnyCam:GetCurrentWindow}`. 
+
+1. The `infected.bin` is a .NET PE.
+![image](https://user-images.githubusercontent.com/84785099/147882703-13d5a9a0-8e3e-4fd3-96dd-a0faaf250d73.png)
+
+2. We can debug the .NET PE using [dnSpy](https://github.com/dnSpy/dnSpy) 
+
+3. As stated in the question "first function that is enabled in the main function?", we can search for `void Main` in the source code as below.
+
+![image](https://user-images.githubusercontent.com/84785099/147883331-3b71a8be-c814-4a36-92f6-316f09bb2826.png)
+
+4. We have the main function, now let's see the first function that is enabled. All the function such as `WebsiteBlocker`, `SelfDestruct`, `DestructFile` are empty that indicate they are disable except for the `GetCurrentWindow` function. Therefore, the `GetCurrentWindow` is the first enable function in `GonnyCam` class.
+
+![image](https://user-images.githubusercontent.com/84785099/147883545-3340c6f3-c40c-4f97-a0de-8d8c31fcb731.png)
+
+#### 7) Malware C - 2
+
+Question: How long is the timer set for KeyStroke? Format: WHC{6000}
+
+Answer: `WHC{3000000}`
+
+![image](https://user-images.githubusercontent.com/84785099/147884611-a4f0c236-221b-40dc-a5d2-8ce8da994c48.png)
+
+#### 8) Malware C - 3 
+
+Question: Find the C2 Format: WHC{http://www.google.com/this-is-a-fake-site/}
+
+Answer: `WHC{http://ziraat-helpdesk.com/components/com_content/limpopapa/}` . We can find the possible C2 using `http://` string as below.
+
+![image](https://user-images.githubusercontent.com/84785099/147884904-75a85df2-bd62-4c62-835a-238b56c2d6c7.png)
 
 
 
