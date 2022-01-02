@@ -1,5 +1,17 @@
 ## WhiteHat Crew CTF 2022
 
+### Dark Web
+#### 1) TorPaste
+
+Question: We found a dangerous information on the Darknet. Can you please try to obtain the info?
+`http://torpastezr7464pevuvdjisbvaf4yqi4n7sgz7lkwgqwxznwy5duj4ad.onion/aRr1wftJbeX7cMjQ/`
+
+Answer:
+
+![image](https://user-images.githubusercontent.com/84785099/147886503-b1cde24b-a154-4759-83a0-00ff3d67b253.png)
+
+---
+
 ### Reversing
 #### 1) Baby Ransom
 
@@ -214,8 +226,14 @@ Answer: `WHC{http://ziraat-helpdesk.com/components/com_content/limpopapa/}` . We
 Question: If microscope is for microorganisms, maybe macroscope is for macroorganism? What is macroorganism? Is it even a word?
 
 Answer: Given hint is macroorganism which came out the word `macro` in my mind. Moreover, it is an `odt` file which is possible a macro file at the first sight.
-
+We can extract a macro file using `binwalk`. Furthermore, reading README.md giving us a hint that we can spawn a shell with that macro file. Basically, if there is a reverse shell, then there must be an IP address attached in the macro file. Thus, we can grep the possible IP and further check the file.
 
 ![image](https://user-images.githubusercontent.com/84785099/147885523-7e96ab36-3fd1-46e0-a89b-b22cb59bb3c8.png)
+
+Grep IP recursively to find possible adversary C2 and we have IP as `127.0.0.1` as localhost. So, whenever a user/victim clicked and enable the Macro, a bash reverse shell will be spawned to `127.0.0.1` via port `9001` which is the victim machine itself :)
+
+![image](https://user-images.githubusercontent.com/84785099/147886254-db534693-5053-44ee-9e09-caefaa666204.png)
+
+As the result, we also have the flag in the `_Resume.odt.extracted/Basic/Standard/connector.xml`
 
 
